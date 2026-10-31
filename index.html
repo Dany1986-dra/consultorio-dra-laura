@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonrisaApp - Consultorio Dra. Laura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-title">
+                <h1>SonrisaApp - Dra. Laura</h1>
+                <p>Gestión Operativa, Automatización de Citas y Retención de Tratamientos</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" onclick="toggleDarkMode()" id="darkModeBtn">🌙 Modo Oscuro</button>
+                <a href="https://calendar.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">📅 Abrir Google Calendar</a>
+            </div>
+        </header>
+
+        <div class="filters-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Filtrar por paciente o tratamiento..." onkeyup="filterTable()">
+            <button class="btn btn-outline" onclick="filterStatus('all')">Todos</button>
+            <button class="btn btn-outline" onclick="filterStatus('pending')">Pendientes</button>
+            <button class="btn btn-outline" onclick="filterStatus('risk')">En Riesgo</button>
+        </div>
+
+        <div class="grid-dashboard">
+            <div>
+                <div class="card">
+                    <h2>Agenda del Día <span class="badge badge-confirmed">3 pacientes activos</span></h2>
+                    <div class="table-responsive">
+                        <table id="patientsTable">
+                            <thead>
+                                <tr>
+                                    <th>Paciente</th>
+                                    <th>Tratamiento / Sesión</th>
+                                    <th>Hora</th>
+                                    <th>Estado</th>
+                                    <th>WhatsApp Rápido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-status="pending">
+                                    <td><strong>Carlos Montero</strong><br><small style="color:var(--text-muted)">506 8888-1234</small></td>
+                                    <td>Endodoncia (Sesión 2/3)</td>
+                                    <td>09:00 AM</td>
+                                    <td><span class="badge badge-pending">Pendiente</span></td>
+                                    <td>
+                                        <a href="https://wa.me/50688881234?text=Hola%20Carlos,%20le%20escribimos%20del%20consultorio%20de%20la%20Dra.%20Laura%20para%20confirmar%20su%20segunda%20sesión%20de%20endodoncia%20hoy%20a%20las%209:00%20AM." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 6px 10px; font-size: 0.75rem;">💬 Confirmar</a>
+                                    </td>
+                                </tr>
+                                <tr data-status="risk">
+                                    <td><strong>María Rodríguez</strong><br><small style="color:var(--text-muted)">506 8700-5678</small></td>
+                                    <td>Ortodoncia (Control)</td>
+                                    <td>11:30 AM</td>
+                                    <td><span class="badge badge-risk">En Riesgo (Faltó)</span></td>
+                                    <td>
+                                        <a href="https://wa.me/50687005678?text=Hola%20María,%20notamos%20que%20no%20pudo%20asistir%20a%20su%20control.%20¿Desea%20que%20reagendemos%20esta%20semana%20con%20la%20Dra.%20Laura?" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 6px 10px; font-size: 0.75rem;">💬 Reactivar</a>
+                                    </td>
+                                </tr>
+                                <tr data-status="confirmed">
+                                    <td><strong>Esteban Solís</strong><br><small style="color:var(--text-muted)">506 8321-9876</small></td>
+                                    <td>Profilaxis General</td>
+                                    <td>02:00 PM</td>
+                                    <td><span class="badge badge-confirmed">Confirmado</span></td>
+                                    <td>
+                                        <a href="https://wa.me/50683219876?text=Hola%20Esteban,%20le%20recordamos%20su%20cita%20de%20limpieza%20hoy%20a%20las%202:00%20PM." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 6px 10px; font-size: 0.75rem;">💬 Recordar</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card">
+                    <h2>Centro de Alertas</h2>
+                    <div class="alert-item">
+                        <div>⚠️</div>
+                        <div class="alert-content">
+                            <p>Carlos Montero</p>
+                            <span>Sesión de endodoncia pendiente de confirmar.</span>
+                        </div>
+                    </div>
+                    <div class="alert-item warning">
+                        <div>⏰</div>
+                        <div class="alert-content">
+                            <p>María Rodríguez</p>
+                            <span>Ausencia detectada. Riesgo de abandono de ortodoncia.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 SonrisaApp - Consultorio Dental Dra. Laura. Todos los derechos reservados.</p>
+            <p><small>Sistema optimizado para reducción de inasistencias y seguimiento multisesión.</small></p>
+        </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
